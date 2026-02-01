@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build"
+  publish = "bible-study-frontend/dist"
+  base = "bible-study-frontend"
+
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "*.md,dist/**,src/services/api/axios.config.ts"
+
+# Redirection pour les routes React (SPA)
+# Toutes les URLs sont redirigées vers index.html pour le routing côté client
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache pour les assets statiques
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
