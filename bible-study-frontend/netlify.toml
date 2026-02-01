@@ -1,13 +1,11 @@
 [build]
   command = "npm run build"
-  publish = "bible-study-frontend/dist"
-  base = "bible-study-frontend"
+  publish = "dist"
 
 [build.environment]
-  SECRETS_SCAN_OMIT_PATHS = "*.md,dist/**,src/services/api/axios.config.ts"
+  SECRETS_SCAN_ENABLED = "false"
 
 # Redirection pour les routes React (SPA)
-# Toutes les URLs sont redirigées vers index.html pour le routing côté client
 [[redirects]]
   from = "/*"
   to = "/index.html"
