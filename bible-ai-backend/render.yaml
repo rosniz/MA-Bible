@@ -1,20 +1,7 @@
-# Render Blueprint pour Bible AI Backend
-# https://render.com/docs/blueprint-spec
-
 services:
-  # PostgreSQL Database
-  - type: pserv
-    name: bible-db
-    env: docker
-    plan: starter
-    region: oregon
-    
-  # Django Web Service
   - type: web
-    name: bible-ai-api
-    env: docker
-    region: oregon
-    plan: starter
+    name: ma-bible-api
+    runtime: docker
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DJANGO_SETTINGS_MODULE
@@ -22,16 +9,22 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
-        value: False
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://ma-bible.netlify.app"
       - key: AI_PROVIDER
-        value: anthropic
+        value: gemini
+      - key: GEMINI_API_KEY
+        sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: bible-db
+          name: ma-bible-db
           property: connectionString
-      - key: ANTHROPIC_API_KEY
-        sync: false
-      - key: ALLOWED_HOSTS
-        sync: false
-      - key: CORS_ALLOWED_ORIGINS
-        sync: false
+
+databases:
+  - name: ma-bible-db
+    databaseName: ma_bible
+    user: ma_bible_user
+    plan: starter
