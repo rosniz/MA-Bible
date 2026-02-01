@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Highlighter, ArrowRight, Trash2, Filter } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/Card';
 import { useReaderStore } from '@/store/readerStore';
-import { bibleService } from '@/services/api/bible.service';
 import type { HighlightColor, Highlight } from '@/services/types/bible.types.extended';
 
 // ─── Color config ─────────────────────────────────────────────────────────────

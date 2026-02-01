@@ -1,4 +1,4 @@
-import { BookOpen, Heart, Users, Sparkles, Shield, Sun, Brain, Smile } from 'lucide-react';
+import { Heart, Users, Sparkles, Shield, Sun, Brain, Smile } from 'lucide-react';
 
 export const SPIRITUAL_THEMES = [
   {

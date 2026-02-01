@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BookOpen, ChevronLeft, ChevronRight, Play, Pause,
@@ -30,7 +30,6 @@ const getHighlightBg = (color: HighlightColor) =>
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export const Reader = () => {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   // URL params: ?book=1&chapter=1

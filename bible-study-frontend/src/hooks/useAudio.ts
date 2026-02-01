@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Verse } from '../types/bible.types'; // your existing type
+import { Verse } from '../services/types/bible.types';
 import { useReaderStore } from '../store/readerStore';
 
 interface UseAudioReturn {

@@ -6,7 +6,8 @@ import {
   HighlightColor,
   Bookmark,
   ReadingProgress,
-} from '../types/bible.types.extended';
+}  from '../services/types/bible.types.extended';
+
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
