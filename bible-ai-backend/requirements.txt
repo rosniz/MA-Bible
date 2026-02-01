@@ -1,0 +1,31 @@
+# Django Core
+Django
+djangorestframework
+django-cors-headers
+django-environ
+
+# Database
+psycopg2-binary
+dj-database-url
+
+# Authentication
+djangorestframework-simplejwt
+
+# AI Providers
+google-generativeai
+google-genai
+
+
+# Production
+gunicorn
+whitenoise
+
+# Utilities
+python-dotenv
+requests
+
+# Development (optional)
+# django-debug-toolbar
+# ipython
+
+drf-spectacular

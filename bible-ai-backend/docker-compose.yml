@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  # Base de données PostgreSQL
+  db:
+    image: postgres:16-alpine
+    container_name: bible_db
+    environment:
+      POSTGRES_DB: bible_db
+      POSTGRES_USER: bible_user
+      POSTGRES_PASSWORD: bible_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bible_user -d bible_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Application Django
+  web:
+    build: .
+    container_name: bible_api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.development
+      - DATABASE_URL=postgresql://bible_user:bible_password@db:5432/bible_db
+
+volumes:
+  postgres_data:
