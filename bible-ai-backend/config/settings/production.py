@@ -19,9 +19,30 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 
-# CORS settings (restrictif en prod)
-CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[])
+# CORS settings
+# ⚠️  Ne pas redéfinir CORS_ALLOWED_ORIGINS ici — elle vient de base.py
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOWED_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 # Database
 DATABASES['default']['CONN_MAX_AGE'] = 600
@@ -67,11 +88,3 @@ LOGGING = {
         },
     },
 }
-
-# Cache (optionnel - à activer si besoin)
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-#         'LOCATION': env('REDIS_URL', default='redis://127.0.0.1:6379/1'),
-#     }
-# }

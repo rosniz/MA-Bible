@@ -17,9 +17,15 @@ echo "👤 Checking superuser..."
 python manage.py shell -c "
 from django.contrib.auth import get_user_model
 User = get_user_model()
-if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'admin@bible-ai.com', 'Admin@123!')
-    print('✅ Superuser created: admin / Admin@123!')
+email = 'admin@bible-ai.com'
+if not User.objects.filter(email=email).exists():
+    User.objects.create_superuser(
+        email=email,
+        password='Admin@123!',
+        first_name='Admin',
+        last_name='',
+    )
+    print('✅ Superuser created: ' + email)
 else:
     print('ℹ️  Superuser already exists')
 " || echo "⚠️  Superuser creation skipped"
