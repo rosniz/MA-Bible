@@ -196,3 +196,16 @@ GEMINI_API_KEY = env('GEMINI_API_KEY', default='')
 # AI Response Settings
 AI_MAX_VERSES = 5
 AI_MODEL_GEMINI = 'gemini-2.5-flash'
+
+
+# CORS Configuration
+CORS_ALLOWED_ORIGINS = [
+    'https://ma-bible.netlify.app',
+]
+
+ALLOWED_HOSTS = ['ma-bible-api.onrender.com', 'localhost', '127.0.0.1']
+
+# Pour le développement uniquement
+if DEBUG:
+    CORS_ALLOWED_ORIGINS.append('http://localhost:5173')
+    CORS_ALLOWED_ORIGINS.append('http://localhost:3000')
