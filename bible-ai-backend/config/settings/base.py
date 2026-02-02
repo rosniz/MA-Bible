@@ -201,11 +201,29 @@ AI_MODEL_GEMINI = 'gemini-2.5-flash'
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = [
     'https://ma-bible.netlify.app',
+    'http://localhost:5173',
+    'http://localhost:3000',
+]
+
+CORS_ALLOWED_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOWED_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 ALLOWED_HOSTS = ['ma-bible-api.onrender.com', 'localhost', '127.0.0.1']
-
-# Pour le développement uniquement
-if DEBUG:
-    CORS_ALLOWED_ORIGINS.append('http://localhost:5173')
-    CORS_ALLOWED_ORIGINS.append('http://localhost:3000')
